@@ -10,14 +10,21 @@ namespace Game.Runtime
         private SplineComputer _splineComputer;
         public SplineComputer SplineComputer => _splineComputer == null ? _splineComputer = GetComponent<SplineComputer>() : _splineComputer;
 
+
         [SerializeField] private LayerMask spawnableLayer;
 
         private Vector3 _lastSpawnPoint = Vector3.negativeInfinity;
+        private SplineMesh[] _splineMeshes;
 
-        private const float MIN_SPAWN_DISTANCE = 0.2f;
+        private const float MIN_SPAWN_DISTANCE = 0.02f;
         private const float MAX_SPAWN_DISTANCE = 0.4f;
+        private const float POINT_SPAWN_OFFSET = 0.05f;
+        private const int MAX_SPAWN_SPLINE_POINT = 9999;
 
-        private const int MAX_SPAWN_SPLINE_POINT = 30;
+        private void Awake()
+        {
+            _splineMeshes = GetComponentsInChildren<SplineMesh>();
+        }
 
         private void Update()
         {
@@ -32,16 +39,18 @@ namespace Game.Runtime
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out RaycastHit hit, 1000, spawnableLayer))
             {
+                Vector3 spawnPoint = hit.point + Vector3.up * POINT_SPAWN_OFFSET;
+
                 if (IsFirstPoint())
                 {
-                    SpawnSplinePoint(hit.point);
+                    SpawnSplinePoint(spawnPoint);
                     return;
                 }
 
-                float pointDistance = Vector3.Distance(hit.point, _lastSpawnPoint);
+                float pointDistance = Vector3.Distance(spawnPoint, _lastSpawnPoint);
 
                 if (pointDistance > MIN_SPAWN_DISTANCE && pointDistance < MAX_SPAWN_DISTANCE)
-                    SpawnSplinePoint(hit.point);
+                    SpawnSplinePoint(spawnPoint);
             }
         }
 
@@ -59,7 +68,8 @@ namespace Game.Runtime
 
         private void SetMeshCount()
         {
-            GetComponent<SplineMesh>().GetChannel(0).count = SplineComputer.pointCount * 10;
+            foreach (SplineMesh splineMesh in _splineMeshes)
+                splineMesh.GetChannel(0).count = SplineComputer.pointCount;
         }
 
         private bool CanSpawn()

@@ -14,7 +14,9 @@ namespace Game.Runtime
 
         private Vector3 _lastSpawnPoint = Vector3.negativeInfinity;
 
-        private const float MIN_SPAWN_OFFSET = 0.2f;
+        private const float MIN_SPAWN_DISTANCE = 0.2f;
+        private const float MAX_SPAWN_DISTANCE = 0.4f;
+
         private const int MAX_SPAWN_SPLINE_POINT = 30;
 
         private void Update()
@@ -30,7 +32,15 @@ namespace Game.Runtime
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out RaycastHit hit, 1000, spawnableLayer))
             {
-                if (Vector3.Distance(hit.point, _lastSpawnPoint) > MIN_SPAWN_OFFSET)
+                if (IsFirstPoint())
+                {
+                    SpawnSplinePoint(hit.point);
+                    return;
+                }
+
+                float pointDistance = Vector3.Distance(hit.point, _lastSpawnPoint);
+
+                if (pointDistance > MIN_SPAWN_DISTANCE && pointDistance < MAX_SPAWN_DISTANCE)
                     SpawnSplinePoint(hit.point);
             }
         }
@@ -40,8 +50,16 @@ namespace Game.Runtime
             if (!CanSpawn())
                 return;
 
-            Debug.Log(spawnPosition);
             _lastSpawnPoint = spawnPosition;
+            Debug.Log(spawnPosition);
+            SplinePoint newPoint = new(spawnPosition);
+            SplineComputer.SetPoint(SplineComputer.pointCount, newPoint);
+            SetMeshCount();
+        }
+
+        private void SetMeshCount()
+        {
+            GetComponent<SplineMesh>().GetChannel(0).count = SplineComputer.pointCount * 10;
         }
 
         private bool CanSpawn()
@@ -50,6 +68,11 @@ namespace Game.Runtime
                 return false;
 
             return true;
+        }
+
+        private bool IsFirstPoint()
+        {
+            return SplineComputer.pointCount == 0;
         }
     }
 }

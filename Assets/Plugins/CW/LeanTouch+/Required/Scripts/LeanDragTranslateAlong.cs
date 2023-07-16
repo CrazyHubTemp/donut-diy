@@ -99,11 +99,16 @@ namespace Lean.Touch
 			var newDelta = Vector3.Lerp(remainingDelta, Vector3.zero, factor);
 
 			// Shift this position by the change in delta
-			finalTransform.position = oldPosition + remainingDelta - newDelta;
+			SetTargetPosition(finalTransform, oldPosition, remainingDelta, newDelta);
 
-			// Update remainingDelta with the dampened value
-			remainingDelta = newDelta;
+            // Update remainingDelta with the dampened value
+            remainingDelta = newDelta;
 		}
+
+		protected virtual void SetTargetPosition(Transform target, Vector3 oldPosition, Vector3 remainingDelta, Vector3 newDelta)
+		{
+            target.position = oldPosition + remainingDelta - newDelta;
+        }
 
 		protected bool TryGetSnappedWorldPosition(ref Vector3 worldPosition)
 		{
@@ -172,11 +177,13 @@ namespace Lean.Touch.Editor
 	using TARGET = LeanDragTranslateAlong;
 
 	[CanEditMultipleObjects]
-	[CustomEditor(typeof(TARGET))]
+	[CustomEditor(typeof(TARGET), true)]
 	public class LeanDragTranslateAlong_Editor : CwEditor
 	{
 		protected override void OnInspector()
 		{
+			//DrawDefaultInspector();
+
 			TARGET tgt; TARGET[] tgts; GetTargets(out tgt, out tgts);
 
 			Draw("target", "This allows you to control how quickly the target value is reached.");

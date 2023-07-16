@@ -22,16 +22,6 @@ namespace Game.Runtime
 
         private const float STARTING_POS_X = 3f;
 
-        private void OnEnable()
-        {
-            
-        }
-
-        private void OnDisable()
-        {
-            
-        }
-
         private void Awake()
         {
             Initialize();

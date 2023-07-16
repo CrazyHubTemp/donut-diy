@@ -328,6 +328,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 249ef2284fa97b14e899b176449dc6fe, type: 3}
   m_PrefabInstance: {fileID: 410005419}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &510981751 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 736ba3936882627459b2030182956e7f, type: 3}
+  m_PrefabInstance: {fileID: 576326898}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &576326898
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -346,7 +351,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 736ba3936882627459b2030182956e7f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.765
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 736ba3936882627459b2030182956e7f, type: 3}
       propertyPath: m_LocalPosition.z
@@ -391,13 +396,32 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 736ba3936882627459b2030182956e7f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 576326902}
   m_SourcePrefab: {fileID: 100100000, guid: 736ba3936882627459b2030182956e7f, type: 3}
 --- !u!4 &576326899 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 736ba3936882627459b2030182956e7f, type: 3}
   m_PrefabInstance: {fileID: 576326898}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &576326902
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 510981751}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 729d797f7d3d4f045bedaffca08e7140, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  churrosFryer: {fileID: 33091016}
+  lowerPos: {x: 0.015, y: 0.3, z: -0.284}
+  movementEase: 1
+  movementDuration: 0.5
 --- !u!1 &748167160
 GameObject:
   m_ObjectHideFlags: 0

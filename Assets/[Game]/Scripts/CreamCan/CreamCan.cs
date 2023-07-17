@@ -13,13 +13,14 @@ namespace Game.Runtime
         private LeanSelectableByFinger LeanSelectable => _leanSelectable == null ? _leanSelectable = GetComponent<LeanSelectableByFinger>() : _leanSelectable;
 
         [SerializeField] private Transform graphics;
+        [SerializeField] private LayerMask ignoreLayer;
 
         private Vector3 _initialRotation;
         private float _initialY;
         private Tween _rotationTween;
 
         private const float TARGET_ROTATION_Z = 140f;
-        private const float OFFSET_Y = 0.1f;
+        private const float OFFSET_Y = 0.02f;
 
         private void Awake()
         {
@@ -49,12 +50,12 @@ namespace Game.Runtime
             if (!LeanSelectable.IsSelected)
                 return;
 
-            graphics.position = Vector3.Lerp(graphics.position, GetHeight(), 8 * Time.deltaTime);
+            graphics.position = Vector3.Lerp(graphics.position, GetHeight(), 5 * Time.deltaTime);
         }
 
         private Vector3 GetHeight()
         {
-            if (Physics.Raycast(graphics.position, Vector3.down, out RaycastHit hit, 1000))
+            if (Physics.Raycast(graphics.position + (Vector3.up * 0.1f), Vector3.down, out RaycastHit hit, 1000, ~ignoreLayer))
                 return new(graphics.position.x, hit.point.y + OFFSET_Y, graphics.position.z);
 
             return Vector3.zero;

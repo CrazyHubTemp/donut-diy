@@ -1,6 +1,7 @@
 using Game.Runtime;
 using DG.Tweening;
 using UnityEngine;
+using Game.Managers;
 
 namespace Game.Props
 {
@@ -62,7 +63,13 @@ namespace Game.Props
             _curTween = _myTransform.DOMove(targetPos, duration).SetEase(movementEase).OnComplete(()=>
             {
                 _curTween = null;
-            });
+            }).SetLink(gameObject);
+        }
+
+        // TODO
+        private void SpawnChurro()
+        {
+            
         }
     }
 }

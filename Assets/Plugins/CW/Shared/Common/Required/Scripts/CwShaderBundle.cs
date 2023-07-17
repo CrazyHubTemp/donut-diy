@@ -81,7 +81,7 @@ namespace CW.Common
 #endif
 		public static int GetProjectHash()
 		{
-			return Application.productName.GetHashCode();
+			return SystemInfo.deviceUniqueIdentifier.GetHashCode() ^ Application.dataPath.GetHashCode();
 		}
 
 		/// <summary>This tells you which rendering pipeline the project is currently using.</summary>

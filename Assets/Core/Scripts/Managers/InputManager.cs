@@ -69,7 +69,7 @@ public class InputManager : Singleton<InputManager>
     {
         if (Input.GetMouseButtonDown(0))
         {
-            LevelManager.Instance.StartLevel();
+            //LevelManager.Instance.StartLevel();
             timePassed = 0;
             firstPos = Input.mousePosition;
 

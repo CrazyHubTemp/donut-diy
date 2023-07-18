@@ -1,5 +1,6 @@
 using Dreamteck.Splines;
 using Game.Managers;
+using Game.Models;
 using Lean.Touch;
 using System;
 using System.Collections;
@@ -30,7 +31,7 @@ namespace Game.Runtime
         private SplineComputer _currentSpline;
         private SplineMesh _currentSplineMesh;
         private bool _isCreamingInProgress;
-        private bool _isContactLost;
+        private Color _targetMeshColor;
 
         private const float MIN_SPAWN_DISTANCE = 0.02f;
         private const float MAX_SPAWN_DISTANCE = 0.05f;
@@ -40,17 +41,25 @@ namespace Game.Runtime
         private void OnEnable()
         {
             LeanSelectable.OnSelectedFinger.AddListener(CreateCreamSpline);
+            EventManager.OnCreamItemSelected.AddListener(UpdateMeshColor);
         }
 
         private void OnDisable()
         {
             LeanSelectable.OnSelectedFinger.RemoveListener(CreateCreamSpline);
+            EventManager.OnCreamItemSelected.RemoveListener(UpdateMeshColor);
+        }
+
+        private void UpdateMeshColor(CreamData data)
+        {
+            _targetMeshColor = data.Color;
         }
 
         private void CreateCreamSpline(LeanFinger arg0)
         {
             _currentSpline = Instantiate(creamSplinePrefab, ChurrosManager.Instance.CurrentChurros.transform);
             _currentSplineMesh = _currentSpline.GetComponent<SplineMesh>();
+            _currentSplineMesh.GetComponent<MeshRenderer>().material.color = _targetMeshColor;
             _currentPointCount = 0;
             _lastSpawnPoint = Vector3.negativeInfinity;
             _isCreamingInProgress = false;
@@ -66,7 +75,7 @@ namespace Game.Runtime
             if (!LeanSelectable.IsSelected)
                 return;
 
-            if (Physics.Raycast(raycastPoint.position, Vector3.down, out RaycastHit hit, creamDistanceThreshold, churrosLayer))
+            if (Physics.Raycast(raycastPoint.position + (Vector3.up * 0.2f), Vector3.down, out RaycastHit hit, creamDistanceThreshold, churrosLayer))
             {
                 Vector3 spawnPoint = hit.point + Vector3.up * POINT_SPAWN_OFFSET;
 

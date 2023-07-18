@@ -1,5 +1,6 @@
 using DG.Tweening;
 using Lean.Touch;
+using Sirenix.OdinInspector;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -18,14 +19,26 @@ namespace Game.Runtime
         private Vector3 _initialRotation;
         private float _initialY;
         private Tween _rotationTween;
+        private Vector3 _initialScale;
+        private float _initialX;
 
         private const float TARGET_ROTATION_Z = 140f;
         private const float OFFSET_Y = 0.02f;
+        private const float STARTING_POS_X = 3f;
 
         private void Awake()
         {
+            Initialize();
+        }
+
+        private void Initialize()
+        {
             _initialRotation = graphics.localEulerAngles;
             _initialY = graphics.position.y;
+            _initialScale = graphics.localScale;
+            _initialX = graphics.localPosition.x;
+            graphics.localScale = Vector3.zero;
+            graphics.localPosition += Vector3.right * STARTING_POS_X;
         }
 
         private void OnEnable()
@@ -43,6 +56,19 @@ namespace Game.Runtime
         private void Update()
         {
             UpdateHeight();
+        }
+
+        [Button]
+        private void InitialMovement()
+        {
+            graphics.DOScale(_initialScale, 0.25f);
+            graphics.DOLocalMoveX(_initialX, 1f).OnComplete(OnMovementCompleted);
+            //TODO: comes from left to initial point.
+
+            void OnMovementCompleted()
+            {
+                LeanSelectable.enabled = true;
+            }
         }
 
         private void UpdateHeight()

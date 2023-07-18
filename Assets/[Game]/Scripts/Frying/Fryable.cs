@@ -1,6 +1,7 @@
 using DG.Tweening;
 using Game.Interfaces;
 using Game.Models;
+using Game.Props;
 using UnityEngine;
 
 namespace Game.Runtime
@@ -17,13 +18,18 @@ namespace Game.Runtime
         [Sirenix.OdinInspector.Button]
         public void Fry()
         {
-            if (_fryingTween != null)
+            if (FryingData.IsFryingStarted)
             {
                 _fryingTween.Play();
                 return;
             }
 
-            _fryingTween = mesh.material.DOGradientColor(FryingData.FryingGradient, FryingData.BurnedTime);
+            FryingData.IsFryingStarted = true;
+            _fryingTween = mesh.material.DOGradientColor(FryingData.FryingGradient, FryingData.BurnedTime)
+                .OnUpdate(()=> {
+                    FryingData.FryingDuration += Time.deltaTime;
+                    FryingOil.OnFry?.Invoke(FryingData);
+                });
         }
 
         public void StopFrying()

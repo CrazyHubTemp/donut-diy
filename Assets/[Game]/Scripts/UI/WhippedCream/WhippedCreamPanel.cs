@@ -37,6 +37,9 @@ namespace Game.Runtime
 
         private void SelectDefaultItem()
         {
+            if (_defaultCreamItem == null)
+                return;
+
             _defaultCreamItem.ToggleItem(true);
         }
 

@@ -34,9 +34,9 @@ namespace Game.Runtime
         private Color _targetMeshColor;
 
         private const float MIN_SPAWN_DISTANCE = 0.02f;
-        private const float MAX_SPAWN_DISTANCE = 0.05f;
+        private const float MAX_SPAWN_DISTANCE = 0.3f;
         private const float POINT_SPAWN_OFFSET = 0f;
-        private const int MAX_SPAWN_SPLINE_POINT = 200;
+        private const int MAX_SPAWN_SPLINE_POINT = 150;
 
         private void OnEnable()
         {

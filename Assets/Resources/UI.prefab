@@ -22016,6 +22016,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: WhippedCreamPanel
       objectReference: {fileID: 0}
+    - target: {fileID: 4475822647125739110, guid: 8207476c776be3d46a5fbf895d99307f, type: 3}
+      propertyPath: m_Alpha
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4475822647125739110, guid: 8207476c776be3d46a5fbf895d99307f, type: 3}
+      propertyPath: m_Interactable
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4475822647125739110, guid: 8207476c776be3d46a5fbf895d99307f, type: 3}
+      propertyPath: m_BlocksRaycasts
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4520528596136409859, guid: 8207476c776be3d46a5fbf895d99307f, type: 3}
       propertyPath: m_SizeDelta.x
       value: 0

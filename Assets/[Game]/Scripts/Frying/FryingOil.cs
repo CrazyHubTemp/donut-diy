@@ -20,7 +20,6 @@ namespace Game.Props
         {
             if (other.TryGetComponent<IFryable>(out _curFryable))
                 _curFryable.StopFrying();
-
         }
     }
 }

@@ -12,12 +12,16 @@ namespace Game.Runtime
 
         [SerializeField]
         private MeshRenderer mesh;
+        [SerializeField]
+        private ParticleSystem fryingParticle;
 
         private Tween _fryingTween;
 
         [Sirenix.OdinInspector.Button]
         public void Fry()
         {
+            fryingParticle.Play();
+
             if (FryingData.IsFryingStarted)
             {
                 _fryingTween.Play();
@@ -35,6 +39,7 @@ namespace Game.Runtime
         public void StopFrying()
         {
             _fryingTween.Pause();
+            fryingParticle.Stop();
         }
     }
 }

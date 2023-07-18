@@ -1,7 +1,6 @@
 using Game.Runtime;
 using DG.Tweening;
 using UnityEngine;
-using Game.Managers;
 
 namespace Game.Props
 {

@@ -1,6 +1,5 @@
-using DG.Tweening;
 using Game.Interfaces;
-using Game.Runtime;
+using Game.Models;
 using System;
 using UnityEngine;
 
@@ -8,7 +7,7 @@ namespace Game.Props
 {
     public class FryingOil : MonoBehaviour
     {
-        public static Action OnFry;
+        public static Action<FryingData> OnFry;
 
         private IFryable _curFryable;
         private bool _isInteracted = false;
@@ -16,14 +15,18 @@ namespace Game.Props
         private void OnTriggerEnter(Collider other)
         {
             if (other.TryGetComponent<IFryable>(out _curFryable))
+            {
                 _isInteracted = true;
+
+                _curFryable.Fry();
+
+            }
         }
 
         private void OnTriggerStay(Collider other)
         {
             if (!_isInteracted) return;
-            _curFryable.Fry();
-            OnFry?.Invoke();
+            OnFry?.Invoke(_curFryable.FryingData);
         }
 
         private void OnTriggerExit(Collider other)

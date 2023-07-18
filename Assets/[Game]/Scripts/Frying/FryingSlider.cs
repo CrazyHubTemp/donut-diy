@@ -1,23 +1,15 @@
+using Game.Models;
 using Game.Props;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace Game.Runtime
 {
-    public class FryingIndicator : MonoBehaviour
+    public class FryingSlider : MonoBehaviour
     {
         [Header("References")]
         [SerializeField]
-        Image indicatorImage;
-
-        private float _startHeight;
-        private Transform _myTransform;
-
-        private void Awake()
-        {
-            _myTransform = transform;
-            _startHeight = _myTransform.position.y;
-        }
+        private Slider slider;
 
         private void OnEnable()
         {
@@ -29,9 +21,14 @@ namespace Game.Runtime
             FryingOil.OnFry -= Increase;
         }
 
-        private void Increase()
+        private void Increase(FryingData fryingData)
         {
-            
+            slider.value += .05f;
+        }
+
+        private void ResetSlider()
+        {
+
         }
     }
 }

@@ -11,7 +11,7 @@ namespace Game.Runtime
     {
         public ChurrosDrawingState(GameStateMachine stateMachine) : base(stateMachine) { }
 
-        private const float CAMERA_BLEND_DURATION = 1f;
+        private const float CAMERA_BLEND_DURATION = 0.75f;
         private const float EVENT_DELAY = 0.25f;
 
         public override IEnumerator EnterState()

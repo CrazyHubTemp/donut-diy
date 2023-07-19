@@ -10,9 +10,9 @@ namespace Game.Runtime
     {
         public ChurrosFryingState(GameStateMachine stateMachine) : base(stateMachine) { }
 
-        private const float CAMERA_BLEND_DURATION = 1f;
+        private const float CAMERA_BLEND_DURATION = 0.75f;
         private const float STATE_DELAY = 1f;
-        private const float EVENT_DELAY = 0.25f;
+        private const float EVENT_DELAY = 0.5f;
 
         public override IEnumerator EnterState()
         {     

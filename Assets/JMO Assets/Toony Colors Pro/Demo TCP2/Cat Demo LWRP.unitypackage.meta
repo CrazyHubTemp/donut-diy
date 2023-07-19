@@ -1,5 +1,10 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/[Game]/Shaders.meta
+guid: f685dfa4829519f418351cfd5b6532bc
+folderAsset: yes
+========
 guid: 8f45e171c1b0c824c8ee28fba89f60d9
+>>>>>>>> master:Assets/JMO Assets/Toony Colors Pro/Demo TCP2/Cat Demo LWRP.unitypackage.meta
 DefaultImporter:
   externalObjects: {}
   userData: 

@@ -9,6 +9,8 @@ public static class Bootstrapper
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
     public static async void Boot()
     {
+        Initialize();
+
         Object.DontDestroyOnLoad(Object.Instantiate(Resources.Load(MANAGERS_OBJECT_NAME)));
         Object.DontDestroyOnLoad(Object.Instantiate(Resources.Load(UI_OBJECT_NAME)));
 
@@ -20,5 +22,10 @@ public static class Bootstrapper
 #else
         LevelManager.Instance.LoadLastLevel();
 #endif
+    }
+
+    private static void Initialize()
+    {
+        Application.targetFrameRate = 60;
     }
 }

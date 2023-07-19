@@ -19,7 +19,14 @@ namespace Game.Runtime
             yield return new WaitForSeconds(STATE_DELAY);
             CameraManager.Instance.ActivateCamera(CameraID.FryingCamera, CAMERA_BLEND_DURATION);
             yield return new WaitForSeconds(EVENT_DELAY);
+            UIManager.Instance.ShowPanel(PanelID.FryHeatPanel);
             GameStateManager.Instance.OnEnterChurrosFryingState.Invoke();
+        }
+
+        public override IEnumerator ExitState()
+        {
+            UIManager.Instance.HidePanel(PanelID.FryHeatPanel);
+            yield break;
         }
     }
 }

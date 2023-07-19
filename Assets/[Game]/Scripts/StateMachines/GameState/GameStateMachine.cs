@@ -61,8 +61,7 @@ namespace Game.Runtime
                 new ChurrosOrderState(this),
                 new ChurrosDrawingState(this),
                 new ChurrosFryingState(this),
-                new WhippedCreamState(this),
-                new SyrupState(this),
+                new WhippedCreamState(this),               
                 new ToppingState(this),
             };
         }

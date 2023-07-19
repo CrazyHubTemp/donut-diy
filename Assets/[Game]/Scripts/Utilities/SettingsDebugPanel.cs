@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Game.Utilities
 {
-    public class SettingsDebugPanel : MonoBehaviour
+    public class SettingsDebugPanel : EasyPanel
     {
         public void SetSoundStatus(bool isActive)
         {

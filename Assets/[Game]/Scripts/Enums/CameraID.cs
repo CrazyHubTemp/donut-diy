@@ -8,7 +8,8 @@ namespace Game.Enums
     {
         None = 0,
         CustomerCamera = 10,
-        DrawingCamera = 20
+        DrawingCamera = 20,
+        FryingCamera = 30
     }
 }
 

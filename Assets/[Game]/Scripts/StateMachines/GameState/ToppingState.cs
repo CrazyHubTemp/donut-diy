@@ -10,16 +10,18 @@ namespace Game.Runtime
     {
         public ToppingState(GameStateMachine stateMachine) : base(stateMachine) { }       
 
-        public override void EnterState()
+        public override IEnumerator EnterState()
         {
             UIManager.Instance.ShowPanel(PanelID.ToppingSelectionPanel);
             GameStateManager.Instance.OnEnterToppingState.Invoke();
+            yield break;
         }
 
-        public override void ExitState()
+        public override IEnumerator ExitState()
         {
             UIManager.Instance.HidePanel(PanelID.ToppingSelectionPanel);
             GameStateManager.Instance.OnExitToppingState.Invoke();
+            yield break;
         }
     }
 }

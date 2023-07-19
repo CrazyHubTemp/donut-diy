@@ -25,7 +25,7 @@ namespace Game.Runtime
         private const float MIN_SPAWN_DISTANCE = 0.02f;
         private const float MAX_SPAWN_DISTANCE = 0.2f;
         private const float POINT_SPAWN_OFFSET = 0.05f;
-        private const int MAX_SPAWN_SPLINE_POINT = 100;
+        private const int MAX_SPAWN_SPLINE_POINT = 50;
 
         private void OnEnable()
         {

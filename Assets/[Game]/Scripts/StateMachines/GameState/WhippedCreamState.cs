@@ -9,14 +9,16 @@ namespace Game.Runtime
     {
         public WhippedCreamState(GameStateMachine stateMachine) : base(stateMachine) { }        
 
-        public override void EnterState()
+        public override IEnumerator EnterState()
         {
             GameStateManager.Instance.OnEnterWhippedCreamState.Invoke();
+            yield break;
         }
 
-        public override void ExitState()
+        public override IEnumerator ExitState()
         {
             GameStateManager.Instance.OnExitWhippedCreamState.Invoke();
+            yield break;
         }
     }
 }

@@ -18,7 +18,7 @@ public static class Bootstrapper
         //Only for testing purposes.
         LevelManager.Instance.LoadCurrentEditorLevel();
 #else
-        LevelSystem.Instance.LoadLastLevel();
+        LevelManager.Instance.LoadLastLevel();
 #endif
     }
 }

@@ -15,6 +15,7 @@ namespace Game.Managers
         public UnityEvent OnEnterChurrosDrawingState { get; private set; } = new();
         public UnityEvent OnExitChurrosDrawingState { get; private set; } = new();
         public UnityEvent OnEnterChurrosFryingState { get; private set; } = new();
+        public UnityEvent OnExitChurrosFryingState { get; private set; } = new();
         public UnityEvent OnEnterWhippedCreamState { get; private set; } = new();
         public UnityEvent OnExitWhippedCreamState { get; private set; } = new();
         public UnityEvent OnEnterSyrupState { get; private set; } = new();

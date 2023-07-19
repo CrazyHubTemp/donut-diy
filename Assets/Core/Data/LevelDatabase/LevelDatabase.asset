@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: LevelDatabase
   m_EditorClassIdentifier: 
   levels:
-  - levelId: Level-Prototype
+  - levelId: Level-Customer
     levelType: 0
   - levelId: Level-Customer
     levelType: 0

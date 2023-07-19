@@ -9,6 +9,18 @@ namespace Game.UI
     {
         public bool IsActive { get; private set; }
 
+        protected override void OnEnable()
+        {
+            base.OnEnable();
+            GameStateManager.Instance.OnStateChanged.AddListener(_ => HidePanel());
+        }
+
+        protected override void OnDisable()
+        {
+            base.OnDisable();
+            GameStateManager.Instance.OnStateChanged.RemoveListener(_ => HidePanel());
+        }
+
         public override void ShowPanel()
         {
             base.ShowPanel();
@@ -22,6 +34,7 @@ namespace Game.UI
 
             IsActive = false;
             GameStateManager.Instance.CurrentStateMachine.EnterNextState();
+            HidePanel();
         }
     }
 }

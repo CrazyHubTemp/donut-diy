@@ -22,6 +22,7 @@ namespace Game.Managers
         public UnityEvent OnEnterToppingState{ get; private set; } = new();
         public UnityEvent OnExitToppingState { get; private set; } = new();
         public UnityEvent OnAllStatesCompleted { get; private set; } = new();
+        public UnityEvent<GameStateBase> OnStateChanged { get; private set; } = new();
 
         public void SetCurrentStateMachine(GameStateMachine stateMachine) 
         {

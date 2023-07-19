@@ -117,7 +117,7 @@ GameObject:
   - component: {fileID: 3435188742441755584}
   - component: {fileID: 6762781663055051225}
   - component: {fileID: 2873263150854268110}
-  - component: {fileID: 6258934892837498662}
+  - component: {fileID: 2561465190901705510}
   m_Layer: 5
   m_Name: Next State Button
   m_TagString: Untagged
@@ -239,7 +239,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &6258934892837498662
+--- !u!114 &2561465190901705510
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -248,13 +248,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 5368978763677173111}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8afa973a543a019408fcb4ac1929a78f, type: 3}
+  m_Script: {fileID: 11500000, guid: a71a9630f8b26c9439f5411e2cbda857, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   body: {fileID: 344199666411468289}
-  punchEase: 4
-  punchStrength: 0.1
-  pucnhDuration: 0.25
+  duration: 0.9
+  multiplier: 0.9
+  ease: 4
 --- !u!1 &5578120579762192215
 GameObject:
   m_ObjectHideFlags: 0

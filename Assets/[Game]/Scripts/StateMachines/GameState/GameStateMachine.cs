@@ -50,6 +50,7 @@ namespace Game.Runtime
 
             CurrentState = GameStates[stateIndex];
             StartCoroutine(CurrentState.EnterState());
+            GameStateManager.Instance.OnStateChanged.Invoke(CurrentState);
         }
 
         private void SetGameStates() 

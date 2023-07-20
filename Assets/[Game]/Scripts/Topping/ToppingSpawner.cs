@@ -79,8 +79,9 @@ namespace Game.Runtime
             for (int i = 0; i < spawnCount; i++)
             {
                 PoolingManager.Instance.Instantiate(GetTopping(), GetSpawnPosition(), GetSpawnRotation());                
-            }    
+            }
 
+            HapticManager.PlayHaptic(Lofelt.NiceVibrations.HapticPatterns.PresetType.LightImpact);
             SoundManager.Instance.PlaySound(Models.AudioID.ShakePour);
         }
 

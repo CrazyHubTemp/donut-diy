@@ -39,6 +39,7 @@ public class PastryBlendShapeController : MonoBehaviour
     {
         UpdateBlendShape(BLENDSHAPE_MAX_WEIGHT);
         SoundManager.Instance.PlaySound(Game.Models.AudioID.Squeezing);
+        HapticManager.PlayHaptic(Lofelt.NiceVibrations.HapticPatterns.PresetType.MediumImpact);
     }
 
     public void Release()

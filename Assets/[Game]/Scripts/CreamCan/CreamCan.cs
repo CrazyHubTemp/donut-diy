@@ -85,6 +85,7 @@ namespace Game.Runtime
                 OnInputStart.Invoke();
                 LeanMover.enabled = true;
                 SelectTween();
+                SoundManager.Instance.PlaySound(Models.AudioID.Creme);
                 _canUpdateHeight = true;
                 UIManager.Instance.HidePanel(Enums.PanelID.DragToMovePanel);
             }

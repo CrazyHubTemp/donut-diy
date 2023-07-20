@@ -61,7 +61,6 @@ namespace Game.Runtime
         {
             _spawnSequence?.Kill();
             _spawnSequence = DOTween.Sequence();
-
             _spawnSequence.Append(body.DOLocalMoveY(DefaultHeight + HEIGHT_OFFSET, MOVEMENT_DURATION).SetEase(MOVEMENT_EASE))
             .Append(body.DOLocalMoveY(DefaultHeight, MOVEMENT_DURATION * 0.8f).SetEase(MOVEMENT_EASE).OnComplete(() => SpawnTopping()))
             .SetLoops(-1, LoopType.Restart);
@@ -80,8 +79,12 @@ namespace Game.Runtime
             int spawnCount = Random.Range(MIN_SPAWN_COUNT, MAX_SPAWN_COUNT);
             for (int i = 0; i < spawnCount; i++)
             {
+                ChurrosScoreManager.Instance.SetIngredient(ToppingManager.Instance.CurrentToppingData);
                 PoolingManager.Instance.Instantiate(GetTopping(), GetSpawnPosition(), GetSpawnRotation());                
-            }            
+            }
+
+            HapticManager.PlayHaptic(Lofelt.NiceVibrations.HapticPatterns.PresetType.LightImpact);
+            SoundManager.Instance.PlaySound(Models.AudioID.ShakePour);
         }
 
         private Vector3 GetSpawnPosition() 

@@ -13,7 +13,7 @@ namespace Game.Runtime
         [SerializeField] private Transform churrosParent;
 
         private const float MOVEMENT_OFFSET = 2f;
-        private const float MOVEMENT_DURATION = 1f;
+        private const float MOVEMENT_DURATION = 0.75f;
         private const Ease MOVEMENT_EASE = Ease.Linear;
 
         private Tween _movementTween;

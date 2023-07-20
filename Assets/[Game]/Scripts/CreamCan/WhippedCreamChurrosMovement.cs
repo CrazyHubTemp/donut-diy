@@ -12,8 +12,8 @@ namespace Game.Runtime
 
         [SerializeField] private Transform churrosParent;
 
-        private const float MOVEMENT_OFFSET = 0.5f;
-        private const float MOVEMENT_DURATION = 0.5f;
+        private const float MOVEMENT_OFFSET = 2f;
+        private const float MOVEMENT_DURATION = 0.75f;
         private const Ease MOVEMENT_EASE = Ease.Linear;
 
         private Tween _movementTween;
@@ -30,7 +30,8 @@ namespace Game.Runtime
 
         private void MoveTowardsPlate()
         {           
-            CurrentChurros.transform.position += MOVEMENT_OFFSET * Vector3.up;
+            Vector3 startPosition = churrosParent.position + MOVEMENT_OFFSET * Vector3.up;
+            CurrentChurros.transform.position = startPosition;
             CurrentChurros.transform.SetParent(churrosParent);
             MovementTween(CurrentChurros.transform);
         }

@@ -36,7 +36,7 @@ namespace Game.UI
 
         private void ResetValues() 
         {
-            IsActive = false;
+            IsActive = true;
         }
     }
 }

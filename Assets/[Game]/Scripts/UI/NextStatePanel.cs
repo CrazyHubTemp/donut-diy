@@ -34,6 +34,7 @@ namespace Game.UI
 
             IsActive = false;
             GameStateManager.Instance.CurrentStateMachine.EnterNextState();
+            SoundManager.Instance.PlaySound(Models.AudioID.StageComplete);
             HidePanel();
         }
     }
